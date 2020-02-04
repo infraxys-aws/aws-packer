@@ -30,8 +30,32 @@
       "autoExport": true,
       "inputPrompt": "",
       "tooltip": "",
-      "scope": "Container",
+      "scope": "Instance",
       "defaultValue": "us-east-1"
+    },
+    {
+      "name": "bastion_name",
+      "caption": "Bastion name",
+      "type": "java.lang.String",
+      "formColumn": 2,
+      "formOrder": 2120,
+      "visibility": "ALWAYS VISIBLE",
+      "writability": "ALWAYS",
+      "required": false,
+      "isPartOfKey": false,
+      "listOfValues": "",
+      "cacheMinutes": 0,
+      "referenceFilter": "",
+      "referenceValueAttributeName": "",
+      "referenceChildGuidFilter": "",
+      "newItemsAllowed": false,
+      "parseWithVelocity": true,
+      "cloneAttribute": true,
+      "autoExport": true,
+      "inputPrompt": "",
+      "tooltip": "",
+      "scope": "Instance",
+      "defaultValue": "$instance.byVelocity(\"bastion_velocity_name\").getAttribute(\"bastion_name\")"
     },
     {
       "name": "bastion_velocity_name",
@@ -54,7 +78,8 @@
       "autoExport": true,
       "inputPrompt": "",
       "tooltip": "",
-      "scope": "Container"
+      "scope": "Instance",
+      "defaultValue": "bastionHost"
     },
     {
       "name": "security_group_name",
@@ -77,7 +102,7 @@
       "autoExport": true,
       "inputPrompt": "",
       "tooltip": "Specify the name of the security where the Packer instance should run. \u003cbr/\u003e\nThis security group must be in the vpc specified.",
-      "scope": "Container",
+      "scope": "Instance",
       "defaultValue": ""
     },
     {
@@ -101,8 +126,8 @@
       "autoExport": true,
       "inputPrompt": "",
       "tooltip": "",
-      "scope": "Container",
-      "defaultValue": "/root/.ssh/$instance.getInstanceByAttributeVelocityName(\"bastion_velocity_name\").getAttribute(\"private_key_filename\")"
+      "scope": "Instance",
+      "defaultValue": "$instance.byVelocity(\"bastion_velocity_name\").getAttribute(\"private_key_file\")"
     },
     {
       "name": "ssh_bastion_username",
@@ -125,8 +150,8 @@
       "autoExport": true,
       "inputPrompt": "",
       "tooltip": "",
-      "scope": "Container",
-      "defaultValue": "$instance.getInstanceByAttributeVelocityName(\"bastion_velocity_name\").getAttribute(\"ssh_username\")"
+      "scope": "Instance",
+      "defaultValue": "$instance.byVelocity(\"bastion_velocity_name\").getAttribute(\"ssh_username\")"
     },
     {
       "name": "subnet_name",
@@ -149,7 +174,7 @@
       "autoExport": true,
       "inputPrompt": "",
       "tooltip": "Specify the name of the subnet where the Packer instance should run. \u003cbr/\u003e\nThis subnet must be in the vpc specified.",
-      "scope": "Container",
+      "scope": "Instance",
       "defaultValue": ""
     },
     {
@@ -174,7 +199,7 @@
       "inputPrompt": "",
       "tooltip": "",
       "scope": "Instance",
-      "defaultValue": ""
+      "defaultValue": "vpc"
     }
   ],
   "files": [
@@ -187,7 +212,7 @@
       "runsIndependent": false,
       "runsParallel": false,
       "runBeforeIndependentActions": false,
-      "parseWithVelocity": true,
+      "parseWithVelocity": false,
       "executable": false,
       "saveWith": "CURRENT INSTANCE",
       "isInteractive": false,
