@@ -1,0 +1,37 @@
+{
+  "version": "1.0",
+  "label": "Packer helper functions",
+  "type": "",
+  "autoExpand": false,
+  "skipEveryInstanceFiles": false,
+  "limitToAllowedChildren": false,
+  "autoGenerate": false,
+  "inheritFilesFromPacketGuid": "",
+  "key": "",
+  "infoHtml": "",
+  "attributes": [],
+  "files": [
+    {
+      "guid": "4060f47f-db51-4bf0-8a64-86842525989d",
+      "filename": "shared_create_ami.sh",
+      "menuCaption": "Create AMI",
+      "directory": "",
+      "runsIndependent": false,
+      "runsParallel": false,
+      "runBeforeIndependentActions": false,
+      "parseWithVelocity": true,
+      "executable": true,
+      "saveWith": "CURRENT INSTANCE",
+      "isInteractive": false,
+      "hideRunnerWindow": false,
+      "timeoutSeconds": 7200,
+      "key": "",
+      "menuOrder": 100,
+      "menuSeparatorBefore": false,
+      "hideFromInstanceActionsMenu": false,
+      "hideFromBottomMenu": false,
+      "menuPath": ""
+    }
+  ],
+  "allowedChildren": []
+}

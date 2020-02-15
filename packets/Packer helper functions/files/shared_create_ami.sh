@@ -2,7 +2,7 @@
 
 set -eo pipefail;
 
-vpc_name="$instance.byVelocity("vpc_velocity_name").getAttribute("vpc_name")";
+vpc_name="$instance.getAttribute("vpc_name")";
 security_group_name="$instance.parent.getAttribute("security_group_name")";
 subnet_name="$instance.parent.getAttribute("subnet_name")";
 aws_region="$instance.parent.getAttribute("aws_region")";

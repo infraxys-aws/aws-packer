@@ -44,7 +44,10 @@ function run_aws_packer() {
 	export packer_tmp_dir="/tmp/packer$$";
 	export packer_target_dir="/tmp/packer$$";
   mkdir $packer_tmp_dir;
-	cp -R $packer_directory/provisioner/* $packer_tmp_dir;
+
+  if [ -d "$packer_directory/provisioner" ]; then
+	  cp -R $packer_directory/provisioner/* $packer_tmp_dir;
+  fi;
 
   run_or_source_files --directory "$packer_directory" --filename_pattern 'init*';
 
@@ -59,7 +62,7 @@ function run_aws_packer() {
             log_info "Looking for AMI with name starting with '$parent_ami_prefix'";
             get_ami --ami_name_prefix "$parent_ami_prefix" --target_variable_name source_ami;
         fi;
-        if [ -z "$source_ami" -o "$source_ami" == "-null-" -o "$source_ami" == "null" ]; then
+        if [ -z "$source_ami" ]; then
             log_error "Unable to find an AMI with name starting with '$parent_ami_prefix'";
         fi;
     fi;

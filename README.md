@@ -1,7 +1,8 @@
 # Infraxys module - aws-packer
 
 This module helps with the creation of AWS AMIs.  
-Use "Packer AWS build environment" as the root of the tree to manage configuration. This packet also contains a shared file that can be included in your own files to run Packer. 
+Use "Packer AWS build environment" as the root of the tree to manage configuration. 
+Inherit this packet to enable the Packer action automatically. 
 
 ![Packer tree](resources/packer-tree.png?raw=true "Packer tree")
 
