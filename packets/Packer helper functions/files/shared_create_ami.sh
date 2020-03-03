@@ -9,6 +9,11 @@ aws_region="$instance.parent.getAttribute("aws_region")";
 bastion_name="$instance.parent.getAttribute("bastion_name")";
 ssh_bastion_username="$instance.parent.getAttribute("ssh_bastion_username")";
 ssh_bastion_private_key_file="$instance.parent.getAttribute("ssh_bastion_private_key_file")";
+#if ($instance.hasAttributeDefined("packer_directory"))
+packer_directory="$instance.getAttribute("packer_directory")";
+#else
+packer_directory="packer";
+#end
 #if ($instance.getAttribute("source_ami") == "")
 parent_ami_prefix="$instance.parent.getAttribute("ami_name_prefix")";
 #else
@@ -16,7 +21,7 @@ parent_ami_prefix="";
 #end
 #[[
 
-run_aws_packer --packer_directory "$default_module_dir/packer" \
+run_aws_packer --packer_directory "$default_module_dir/$packer_directory" \
 	--vpc_name "$vpc_name" \
 	--security_group_name "$security_group_name" \
 	--subnet_name "$subnet_name" \
