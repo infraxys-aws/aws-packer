@@ -1,5 +1,6 @@
 {
   "version": "1.0",
+  "id": "bfcf5b5c-04ec-4714-95f3-ee5974273932",
   "label": "%ami_name_prefix%",
   "type": "PACKER_AMI",
   "autoExpand": true,
@@ -10,6 +11,7 @@
   "infoHtml": "",
   "attributes": [
     {
+      "id": "60dfdf36-b688-4a6b-9922-20721d1e82db",
       "name": "ami_name_prefix",
       "caption": "AMI name prefix",
       "type": "java.lang.String",
@@ -23,7 +25,7 @@
       "cacheMinutes": 0,
       "referenceFilter": "",
       "referenceValueAttributeName": "",
-      "referenceChildGuidFilter": "",
+      "referenceChildIdFilter": "",
       "newItemsAllowed": false,
       "parseWithVelocity": true,
       "cloneAttribute": true,
@@ -33,6 +35,7 @@
       "defaultValue": ""
     },
     {
+      "id": "68a332ad-e500-44d9-beaf-c0c73a09b44c",
       "name": "associate_public_ip_address",
       "caption": "Public IP for Builder Instance",
       "type": "java.lang.Boolean",
@@ -46,7 +49,7 @@
       "cacheMinutes": 0,
       "referenceFilter": "",
       "referenceValueAttributeName": "",
-      "referenceChildGuidFilter": "",
+      "referenceChildIdFilter": "",
       "newItemsAllowed": false,
       "parseWithVelocity": false,
       "cloneAttribute": true,
@@ -56,6 +59,7 @@
       "defaultValue": "0"
     },
     {
+      "id": "ea9fb68e-6ff3-4bc9-a75e-7012d147ffd2",
       "name": "debug_mode",
       "caption": "Debug mode",
       "type": "java.lang.Boolean",
@@ -69,7 +73,7 @@
       "cacheMinutes": 0,
       "referenceFilter": "",
       "referenceValueAttributeName": "",
-      "referenceChildGuidFilter": "",
+      "referenceChildIdFilter": "",
       "newItemsAllowed": false,
       "parseWithVelocity": false,
       "cloneAttribute": true,
@@ -79,6 +83,7 @@
       "defaultValue": "0"
     },
     {
+      "id": "3685f5d6-e374-400c-b90f-ca8198d1fe85",
       "name": "do_encrypt_boot",
       "caption": "Encrypt boot volume",
       "type": "java.lang.Boolean",
@@ -92,7 +97,7 @@
       "cacheMinutes": 0,
       "referenceFilter": "",
       "referenceValueAttributeName": "",
-      "referenceChildGuidFilter": "",
+      "referenceChildIdFilter": "",
       "newItemsAllowed": false,
       "parseWithVelocity": false,
       "cloneAttribute": true,
@@ -102,6 +107,7 @@
       "defaultValue": "0"
     },
     {
+      "id": "9a934f58-3eda-401d-83fa-667a2b3edc63",
       "name": "json_filename",
       "caption": "Packer Json filename",
       "type": "java.lang.String",
@@ -115,7 +121,7 @@
       "cacheMinutes": 0,
       "referenceFilter": "",
       "referenceValueAttributeName": "",
-      "referenceChildGuidFilter": "",
+      "referenceChildIdFilter": "",
       "newItemsAllowed": false,
       "parseWithVelocity": false,
       "cloneAttribute": true,
@@ -125,6 +131,7 @@
       "defaultValue": ""
     },
     {
+      "id": "b9930049-a297-4193-bc1b-90808733ed96",
       "name": "packer_module_git_branch",
       "caption": "Git branch",
       "type": "java.lang.String",
@@ -138,7 +145,7 @@
       "cacheMinutes": 0,
       "referenceFilter": "",
       "referenceValueAttributeName": "",
-      "referenceChildGuidFilter": "",
+      "referenceChildIdFilter": "",
       "newItemsAllowed": false,
       "parseWithVelocity": false,
       "cloneAttribute": true,
@@ -148,6 +155,7 @@
       "defaultValue": "master"
     },
     {
+      "id": "5982e2f1-3b0f-482a-9ea1-54033e082b9b",
       "name": "packer_module_git_url",
       "caption": "Git URL",
       "type": "java.lang.String",
@@ -161,7 +169,7 @@
       "cacheMinutes": 0,
       "referenceFilter": "",
       "referenceValueAttributeName": "",
-      "referenceChildGuidFilter": "",
+      "referenceChildIdFilter": "",
       "newItemsAllowed": false,
       "parseWithVelocity": false,
       "cloneAttribute": true,
@@ -171,6 +179,7 @@
       "defaultValue": ""
     },
     {
+      "id": "12bcff33-0211-4b2c-a97a-1d24a7f19096",
       "name": "PACKER_VERSION",
       "caption": "Packer version",
       "type": "java.lang.String",
@@ -184,7 +193,7 @@
       "cacheMinutes": 0,
       "referenceFilter": "",
       "referenceValueAttributeName": "",
-      "referenceChildGuidFilter": "",
+      "referenceChildIdFilter": "",
       "newItemsAllowed": true,
       "parseWithVelocity": false,
       "cloneAttribute": true,
@@ -194,6 +203,7 @@
       "defaultValue": "1.5.1"
     },
     {
+      "id": "52a899fb-e5da-4559-b6db-11aba6a86873",
       "name": "pre_run_script",
       "caption": "Pre-run script",
       "type": "byte[]",
@@ -207,7 +217,7 @@
       "cacheMinutes": 0,
       "referenceFilter": "",
       "referenceValueAttributeName": "",
-      "referenceChildGuidFilter": "",
+      "referenceChildIdFilter": "",
       "newItemsAllowed": false,
       "parseWithVelocity": true,
       "cloneAttribute": true,
@@ -217,6 +227,7 @@
       "defaultValue": ""
     },
     {
+      "id": "6e9a5ec2-f8f8-4cf4-919b-c21f973bc50f",
       "name": "source_ami",
       "caption": "Base AMI",
       "type": "java.lang.String",
@@ -230,7 +241,7 @@
       "cacheMinutes": 0,
       "referenceFilter": "",
       "referenceValueAttributeName": "",
-      "referenceChildGuidFilter": "",
+      "referenceChildIdFilter": "",
       "newItemsAllowed": false,
       "parseWithVelocity": false,
       "cloneAttribute": true,
@@ -240,6 +251,7 @@
       "defaultValue": ""
     },
     {
+      "id": "431d0cdc-4954-4c3f-8e94-ef3e2f50a336",
       "name": "ssh_username",
       "caption": "Ssh username",
       "type": "java.lang.String",
@@ -253,7 +265,7 @@
       "cacheMinutes": 0,
       "referenceFilter": "",
       "referenceValueAttributeName": "",
-      "referenceChildGuidFilter": "",
+      "referenceChildIdFilter": "",
       "newItemsAllowed": false,
       "parseWithVelocity": false,
       "cloneAttribute": true,
@@ -265,7 +277,7 @@
   ],
   "files": [
     {
-      "guid": "54467302-2b5d-4664-b804-ef93989bae8f",
+      "id": "54467302-2b5d-4664-b804-ef93989bae8f",
       "filename": "create_ami.sh",
       "includeName": "",
       "menuCaption": "Create AMI",
@@ -284,7 +296,9 @@
       "menuSeparatorBefore": false,
       "hideFromInstanceActionsMenu": false,
       "hideFromBottomMenu": false,
-      "menuPath": ""
+      "menuPath": "",
+      "dockerImage": "",
+      "customCommand": ""
     }
   ],
   "allowedChildren": []

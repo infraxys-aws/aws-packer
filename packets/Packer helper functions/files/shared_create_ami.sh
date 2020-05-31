@@ -14,11 +14,19 @@ packer_directory="$instance.getAttribute("packer_directory")";
 #else
 packer_directory="packer";
 #end
-#if ($instance.getAttribute("source_ami") == "")
-parent_ami_prefix="$instance.parent.getAttribute("ami_name_prefix")";
+#if ($instance.hasAttributeDefined("image_owners"))
+image_owners="$instance.getAttribute("image_owners")";
 #else
-parent_ami_prefix="";
+image_owners=""
 #end
+
+aws_core_vault_config_variable="$container.getAttribute("aws_core_vault_config_variable", false)";
+
+if [ -n "${D}aws_core_vault_config_variable" ]; then
+	[[ -z "${D}AWS_PROFILE" ]] && log_fatal "AWS_PROFILE should be set to retrieve the SSH config and keys.";
+	generate_ssh_config_for_vpc --vpc_name "$instance.parent.getAttribute("vpc_name")";
+	get_ssh_keys_from_vault --vault_config_variable "${D}aws_core_vault_config_variable";
+fi;
 #[[
 
 run_aws_packer --packer_directory "$default_module_dir/$packer_directory" \
@@ -26,9 +34,10 @@ run_aws_packer --packer_directory "$default_module_dir/$packer_directory" \
 	--security_group_name "$security_group_name" \
 	--subnet_name "$subnet_name" \
 	--aws_region "$aws_region" \
+	--source_ami "$source_ami" \
     --ami_name_prefix "$ami_name_prefix" \
+    --image_owners "$image_owners" \
     --ami_description "$ami_description" \
-    --parent_ami_prefix "$parent_ami_prefix" \
     --bastion_name "$bastion_name" \
     --ssh_bastion_username "$ssh_bastion_username" \
     --ssh_bastion_private_key_file "$ssh_bastion_private_key_file";

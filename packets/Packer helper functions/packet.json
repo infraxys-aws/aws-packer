@@ -1,18 +1,18 @@
 {
   "version": "1.0",
+  "id": "24486243-8a15-4707-a20e-3ddf035f5eb1",
   "label": "Packer helper functions",
   "type": "",
   "autoExpand": false,
   "skipEveryInstanceFiles": false,
   "limitToAllowedChildren": false,
   "autoGenerate": false,
-  "inheritFilesFromPacketGuid": "",
   "key": "",
   "infoHtml": "",
   "attributes": [],
   "files": [
     {
-      "guid": "4060f47f-db51-4bf0-8a64-86842525989d",
+      "id": "4060f47f-db51-4bf0-8a64-86842525989d",
       "filename": "shared_create_ami.sh",
       "menuCaption": "Create AMI",
       "directory": "",
@@ -30,7 +30,9 @@
       "menuSeparatorBefore": false,
       "hideFromInstanceActionsMenu": false,
       "hideFromBottomMenu": false,
-      "menuPath": ""
+      "menuPath": "",
+      "dockerImage": "",
+      "customCommand": ""
     }
   ],
   "allowedChildren": []
