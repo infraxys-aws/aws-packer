@@ -1,29 +1,32 @@
 
 function ensure_packer() {
-  PACKER_VERSION="${PACKER_VERSION:-"1.5.6"}";
-  export PACKER="/usr/local/bin/packer-$PACKER_VERSION";
-  if [ -f "$filename" ]; then
-    log_info "Using Packer version $PACKER_VERSION.";
-  else
-    log_info "Installing Packer version $PACKER_VERSION";
-    curl -sSLo "/tmp/packer.zip" https://releases.hashicorp.com/packer/$PACKER_VERSION/packer_${PACKER_VERSION}_linux_amd64.zip;
-    cd /tmp && unzip packer.zip;
-    mv packer $PACKER
-    rm -f packer.zip;
-    chmod u+x "$PACKER";
-  fi;
+    PACKER_VERSION="${PACKER_VERSION:-"1.5.6"}";
+    export PACKER="packer-$PACKER_VERSION";
+
+    if [ $(which "$PACKER") ]; then
+        log_info "Using Packer binary $PACKER from $(which $PACKER)"
+    else
+        log_info "Installing Packer version $PACKER_VERSION";
+        curl -sSLo "/tmp/packer.zip" https://releases.hashicorp.com/packer/$PACKER_VERSION/packer_${PACKER_VERSION}_linux_amd64.zip;
+        cd /tmp && unzip packer.zip;
+        mv packer "/cache/project/bin/$PACKER";
+        chmod u+x "/cache/project/bin/$PACKER";
+        rm -f packer.zip;
+        chmod u+x "/cache/project/bin/$PACKER";
+        cd -;
+    fi;
 }
 
 function run_aws_packer() {
 	local function_name=run_packer packer_directory ami_name_prefix image_owners ami_description source_ami vpc_name \
-	    bastion_name ssh_bastion_username ssh_bastion_private_key_file security_group_name subnet_name aws_region;
+	    bastion_name ssh_bastion_username ssh_bastion_private_key_file security_group_name subnet_name aws_region packer_version="1.5.6";
 	import_args "$@";
 	check_required_arguments $function_name packer_directory ami_name_prefix ami_description vpc_name \
 	    bastion_name ssh_bastion_username ssh_bastion_private_key_file security_group_name subnet_name aws_region;
 
 	local ssh_bastion_host vpc_id;
 	export AWS_DEFAULT_REGION="$aws_region";
-
+    export PACKER_VERSION="$packer_version";
 	ensure_packer;
 	#vpc_id security_group_id subnet_id ssh_bastion_host;
     get_vpc_id --vpc_name "$vpc_name" --target_variable_name vpc_id;
@@ -37,7 +40,7 @@ function run_aws_packer() {
     log_info "Using bastion $ssh_bastion_host and private key $ssh_bastion_private_key_file";
 
     if [ ! -f "$ssh_bastion_private_key_file" ]; then
-      log_fatal "Bastion private key file doesn't exist: $ssh_bastion_private_key_file.";
+      log_fatal "\Bastion private key file doesn't exist: $ssh_bastion_private_key_file.";
     fi;
     log_info "Using vpc '$vpc_id', security group '$security_group_id', subnet '$subnet_id' and bastion '$ssh_bastion_host'.";
 
