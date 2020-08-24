@@ -1,19 +1,22 @@
-
+# This ensure_packer function should be moved to a central location since it exists in aliyun-commons as well
 function ensure_packer() {
-    PACKER_VERSION="${PACKER_VERSION:-"1.5.6"}";
-    export PACKER="packer-$PACKER_VERSION";
+    local packer_version;
+    import_args "$@";
+    check_required_arguments "ensure_packer" packer_version;
 
+    export PACKER="packer-$packer_version";
     if [ $(which "$PACKER") ]; then
-        log_info "Using Packer binary $PACKER from $(which $PACKER)"
+        log_info "Packer version $packer_version is already installed at $(which $PACKER).";
     else
-        log_info "Installing Packer version $PACKER_VERSION";
-        curl -sSLo "/tmp/packer.zip" https://releases.hashicorp.com/packer/$PACKER_VERSION/packer_${PACKER_VERSION}_linux_amd64.zip;
-        cd /tmp && unzip packer.zip;
+        log_info "Packer version $packer_version not available. Installing it now in the project cache.";
+        curl -Lo "/tmp/packer.zip" https://releases.hashicorp.com/packer/$packer_version/packer_${packer_version}_linux_amd64.zip;
+        cd /tmp;
+        unzip packer.zip;
         mv packer "/cache/project/bin/$PACKER";
         chmod u+x "/cache/project/bin/$PACKER";
         rm -f packer.zip;
-        chmod u+x "/cache/project/bin/$PACKER";
         cd -;
+        log_info "Packer $packer_version is available at $(which $PACKER)";
     fi;
 }
 
@@ -27,7 +30,7 @@ function run_aws_packer() {
 	local ssh_bastion_host vpc_id;
 	export AWS_DEFAULT_REGION="$aws_region";
     export PACKER_VERSION="$packer_version";
-	ensure_packer;
+	ensure_packer --packer_version "$packer_version";
 	#vpc_id security_group_id subnet_id ssh_bastion_host;
     get_vpc_id --vpc_name "$vpc_name" --target_variable_name vpc_id;
     get_security_group_id --vpc_id "$vpc_id" --security_group_name $security_group_name --target_variable_name security_group_id;

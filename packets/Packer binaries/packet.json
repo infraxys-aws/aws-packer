@@ -1,0 +1,63 @@
+{
+  "version": "1.0",
+  "id": "d3fe7e66-ee44-4b89-a5fb-ae01bd6c8d9b",
+  "label": "Packer binaries",
+  "type": "",
+  "class": "",
+  "autoExpand": false,
+  "skipEveryInstanceFiles": false,
+  "limitToAllowedChildren": false,
+  "key": "",
+  "infoHtml": "",
+  "attributes": [
+    {
+      "id": "2afd6a83-ce98-4f4e-a11d-1f7a1dfbc41e",
+      "name": "versions",
+      "caption": "Versions to install",
+      "type": "byte[]",
+      "formColumn": 1,
+      "formOrder": 1100,
+      "visibility": "ALWAYS VISIBLE",
+      "writability": "ALWAYS",
+      "required": true,
+      "isPartOfKey": false,
+      "listOfValues": "",
+      "referenceFilter": "",
+      "referenceValueAttributeName": "",
+      "referenceChildIdFilter": "",
+      "newItemsAllowed": false,
+      "parseWithVelocity": false,
+      "inputPrompt": "",
+      "tooltip": "\u003cp\u003eSpecify one version number per line.\u003cp\u003e",
+      "scope": "Instance",
+      "defaultValue": "1.6.1\n1.5.6\n"
+    }
+  ],
+  "files": [
+    {
+      "id": "31560b34-8e43-4e06-a713-1d5eac2e680e",
+      "filename": "ensure_versions_installed.sh",
+      "includeName": "",
+      "menuCaption": "Ensure versions installed",
+      "directory": "",
+      "runsIndependent": false,
+      "runsParallel": false,
+      "runBeforeIndependentActions": false,
+      "parseWithVelocity": false,
+      "executable": true,
+      "saveWith": "CURRENT INSTANCE",
+      "isInteractive": false,
+      "hideRunnerWindow": false,
+      "timeoutSeconds": 3600,
+      "key": "",
+      "menuOrder": 100,
+      "menuSeparatorBefore": false,
+      "hideFromInstanceActionsMenu": false,
+      "hideFromBottomMenu": false,
+      "menuPath": "",
+      "dockerImage": "",
+      "customCommand": ""
+    }
+  ],
+  "allowedChildren": []
+}
