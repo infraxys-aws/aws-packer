@@ -9,14 +9,13 @@ function run_aws_packer() {
 	export AWS_DEFAULT_REGION="$aws_region";
     export PACKER_VERSION="$packer_version";
 	ensure_packer --packer_version "$packer_version";
-	#vpc_id security_group_id subnet_id ssh_bastion_host;
+	
     get_vpc_id --vpc_name "$vpc_name" --target_variable_name vpc_id;
     get_security_group_id --vpc_id "$vpc_id" --security_group_name $security_group_name --target_variable_name security_group_id;
     get_subnet_id --vpc_id "$vpc_id" --subnet_name $subnet_name --target_variable_name subnet_id;
     get_instance_public_dns --instance_name "$bastion_name" --vpc_id "$vpc_id" --target_variable_name ssh_bastion_host;
 
-    log_info "Initializing Packer environment.";
-
+    log_info "Initializing Packer environment using $packer_directory.";
     export vpc_id security_group_id subnet_id ssh_bastion_host ssh_bastion_private_key_file;
     log_info "Using bastion $ssh_bastion_host and private key $ssh_bastion_private_key_file";
 
